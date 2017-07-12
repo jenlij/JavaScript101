@@ -55,3 +55,36 @@ function splitAmount(bill, service, people) {
 console.log(splitAmount(100, 'good', 5));
 
 console.log(splitAmount(40, 'fair', 2));
+
+
+//102 exercises
+function printNumbers(start, end) {
+    for (var i = start; i <= end; i ++) {
+        console.log(i + "\n");
+    }    
+}
+
+printNumbers(1, 10);
+
+function printNumbers2(start, end) {
+    var i = start;
+    while (i <= end) {
+        console.log(i + "\n");
+        i++;
+    }
+}
+printNumbers2(1, 10);
+
+//print square
+function printSquare() {
+    
+}
+//print box
+
+//print banner
+
+//factor a number
+
+//caesar cipher
+
+//caesar cipher 2
