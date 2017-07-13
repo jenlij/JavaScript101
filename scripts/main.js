@@ -154,6 +154,27 @@ factorMe(120);
 //caesar cipher 2
 
 //leetspeak
+function leetspeak(str) {
+    var str = str.toUpperCase();
+    var letters = ['A','E','G','I','O','S','T'];
+    var leets = ['4','3','6','1','0','5','7'];
+    var new_word = '';
+    for (var i = 0; i < str.length; i++) {
+        for (var j = 0; j < letters.length; j++) {
+            if (letters.indexOf(str.charAt(i)) == -1) {
+                new_word += str.charAt(i);
+                break;
+            }
+            else if (str.charAt(i) == letters[j]) {
+                new_word += leets[j];
+            }
+        }
+            
+    }
+    return new_word;
+}
+console.log(leetspeak('Leet'));
+console.log(leetspeak('Jennifer Li Johnson'));
 
 //long long vowels
 
