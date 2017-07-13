@@ -35,9 +35,23 @@ function tipAmount(bill, service) {
         return bill * 0.1;
     }
 }
-console.log(tipAmount(100, 'good'));
-console.log(tipAmount(100, 'fair'));
-console.log(tipAmount(100, 'bad'));
+
+function tipAmountV2(bill, service) {
+    var tip = 0;
+    var serviceLevels = {
+        'good': 0.2,
+        'fair': 0.15,
+        'bad': 0.1
+    };
+    if (service in serviceLevels) {
+        tip = bill * serviceLevels[service];
+    }
+    return tip
+}
+
+console.log(tipAmountV2(100, 'good'));
+console.log(tipAmountV2(100, 'fair'));
+console.log(tipAmountV2(100, 'bad'));
 
 //tip calculator 2
 function totalAmount(bill, service) {
@@ -150,8 +164,31 @@ function factorMe(number) {
 factorMe(120);     
 
 //caesar cipher
+function ciper(str, key) {
+    var alpha = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
+
+}
+//console.log(cipher('Genius without education is like silver in the mine', 13));
 
 //caesar cipher 2
+function decipher(str, key) {
+    var str = str.toLowerCase();
+    var alpha = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
+    var new_letter = '';
+    var new_str = '';
+    for (var i = 0; i < str.length; i++) {
+        if (alpha.indexOf(str.charAt(i)) > -1) {
+            new_letter = alpha[alpha.indexOf(str.charAt(i))];
+            break;
+        }
+        else {
+            new_letter = ' ';
+        }
+        new_str += new_letter;    
+    }
+    return new_str;
+}
+console.log(decipher('Travhf jvgubhg rqhpngvba vf yvxr fvyire va gur zvar', 13));
 
 //leetspeak
 function leetspeak(str) {
