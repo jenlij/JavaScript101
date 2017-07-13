@@ -38,6 +38,9 @@ function tipAmount(bill, service) {
 
 function tipAmountV2(bill, service) {
     var tip = 0;
+    if (!service) {
+        throw new Error('Value Error: please pass in string as service');
+    }
     var serviceLevels = {
         'good': 0.2,
         'fair': 0.15,
@@ -164,13 +167,27 @@ function factorMe(number) {
 factorMe(120);     
 
 //caesar cipher
-function ciper(str, key) {
+function cipher(str, key) {
+    var str = str.toLowerCase();
     var alpha = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
-
+    var new_letter = '';
+    var new_str = '';
+    for (var i = 0; i < str.length; i++) {
+        if (alpha.indexOf(str.charAt(i)) > -1) {
+            new_letter = alpha[(alpha.indexOf(str.charAt(i))+key) % 26];
+        }
+        
+        else {
+            new_letter = ' ';
+        }
+        new_str += new_letter;    
+    }
+    return new_str;
 }
-//console.log(cipher('Genius without education is like silver in the mine', 13));
 
-//caesar cipher 2
+console.log(cipher('Genius without education is like silver in the mine', 15));
+
+//caesar decipher
 function decipher(str, key) {
     var str = str.toLowerCase();
     var alpha = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
@@ -178,8 +195,7 @@ function decipher(str, key) {
     var new_str = '';
     for (var i = 0; i < str.length; i++) {
         if (alpha.indexOf(str.charAt(i)) > -1) {
-            new_letter = alpha[alpha.indexOf(str.charAt(i))];
-            break;
+            new_letter = alpha[(alpha.indexOf(str.charAt(i))-key + 26) % 26];
         }
         else {
             new_letter = ' ';
@@ -188,7 +204,7 @@ function decipher(str, key) {
     }
     return new_str;
 }
-console.log(decipher('Travhf jvgubhg rqhpngvba vf yvxr fvyire va gur zvar', 13));
+console.log(decipher('Vtcxjh lxiwdji tsjrpixdc xh axzt hxaktg xc iwt bxct', 15));
 
 //leetspeak
 function leetspeak(str) {
@@ -212,6 +228,32 @@ function leetspeak(str) {
 }
 console.log(leetspeak('Leet'));
 console.log(leetspeak('Jennifer Li Johnson'));
+
+function leetsV2(str) {
+    var str = str.toUpperCase();
+    var d = {
+        'A': '4',
+        'E': '3',
+        'G': '6',
+        'I': '1',
+        'O': '0',
+        'S': '5',
+        'T': '7'
+    };
+    var new_word = '';
+    for (var i = 0; i < str.length; i++) {
+        if (str.charAt(i) in d) {
+            new_word += d[str.charAt(i)];
+        }
+        else {
+            new_word += str.charAt(i);
+        }
+    }
+    return new_word;
+}
+console.log(leetsV2('Leet'));
+console.log(leetsV2('Jennifer Li Johnson'));
+
 
 //long long vowels
 
