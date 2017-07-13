@@ -288,7 +288,7 @@ console.log(longVowels('Man'));
 
 //sum the nums
 function sumNumbers(arr) {
-    return arr.reduce(function(a, b) {return a + b;}, 0)
+    return arr.reduce(function(a, b) {return a + b;}, 0);
 }
 console.log(sumNumbers([1, 4, 8]));
 
@@ -316,6 +316,33 @@ console.log(positives([1, 2, 3]))
 console.log(positives([-1, -2, -3]))
 
 //matrix addition
+function matrixAdd(matrix1, matrix2) {
+    var sumMatrix = [];
+    for (var i = 0; i < 2; i++) {
+        var newRow = [];
+        for (var j = 0; j < 2; j++) {
+            newRow.push(matrix1[i][j] + matrix2[i][j]);
+        }
+        sumMatrix.push(newRow);
+    }
+    return sumMatrix;
+}
+console.log(matrixAdd([[1, 3], [2, 4]], [[5, 2], [1, 0]]));
+    
+    //var  i=0
+
+
+    // for row in twoD1:
+    //     new_row = []
+    //     j = 0
+    //     for value in row:
+    //         new_row.append(value + twoD2[i][j])
+    //         j += 1
+    //     new_matrix.append(new_row)
+    //     i += 1       
+
+
+
 
 //matrix multiplication
 
