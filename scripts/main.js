@@ -256,6 +256,35 @@ console.log(leetsV2('Jennifer Li Johnson'));
 
 
 //long long vowels
+function longVowels(str) {
+    var vowels = {
+      'a': '1',
+      'e': '2',
+      'i': '3',
+      'o': '4',
+      'u': '5'
+      };
+    
+    var str = str.toLowerCase();
+    var new_word = '';
+    for (var i = 0; i < str.length; i++) {
+      if ((str[i] in vowels) && (i < str.length-1)) {
+        if (str[i] == str[i+1]) {
+            new_word += str[i].repeat(4);
+        }
+        else {
+            new_word += str[i];
+        }
+      }
+      else {
+      new_word += str[i];
+      }
+    }
+    return new_word;
+}
+console.log(longVowels('Good'));
+console.log(longVowels('Cheese'));
+console.log(longVowels('Man'));
 
 //sum the nums
 
