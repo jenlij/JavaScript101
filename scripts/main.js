@@ -287,8 +287,33 @@ console.log(longVowels('Cheese'));
 console.log(longVowels('Man'));
 
 //sum the nums
+function sumNumbers(arr) {
+    return arr.reduce(function(a, b) {return a + b;}, 0)
+}
+console.log(sumNumbers([1, 4, 8]));
+
+function sumArr(arr) {
+    var sum = 0;
+    for (var i = 0; i < arr.length; i++) {
+        sum += arr[i];
+    }
+    return sum;
+}
+console.log(sumArr([1,4,8]));
 
 //just positives
+function positives(arr) {
+    var new_arr = [];
+    for (var i = 0; i < arr.length; i++) { 
+       if (arr[i] >= 0){
+           new_arr.push(arr[i]);
+       } 
+    }
+    return new_arr;
+}
+console.log(positives([1, -3, 5, -3, 0]))
+console.log(positives([1, 2, 3]))
+console.log(positives([-1, -2, -3]))
 
 //matrix addition
 
