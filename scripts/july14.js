@@ -89,6 +89,81 @@ function top2Letters(str) {
     var result = Object.keys(letterHist).sort(function(a, b) {
         return letterHist[b] - letterHist[a];
     });
-    console.log(result);
+    console.log('first place: ' + result[0] + '\nsecond place: ' + result[1]);
 }
 top2Letters('abbbccddddeee'); //dbeca
+
+
+//FUNCTION EXCERCISES
+//positive numbers
+function positiveNums(arr) {
+    return arr.filter(
+        function(a) {
+            return a >= 0;
+        }
+    );
+}
+console.log(positiveNums([0, 1, -1, 2, -2, 3, 4, -5]));
+
+//even numbers
+//common version
+function evens(arr) {
+    return arr.filter(
+        function(a) {
+            return a % 2 == 0;
+        }
+    );
+}
+
+console.log(evens([0,1,2,3,4,5,6,6,7]));
+
+//modular version
+var arr = [0,1,2,3,4,5,6,6,7];
+function isEven(num) {
+    return num % 2 == 0;
+}
+function filterMe(arr, fn) {
+    return arr.filter(fn);
+}
+console.log(filterMe(arr, isEven));
+
+//Square the numbers
+function squareMe(num) {
+    return num * num;
+}   
+function mapMe(arr, fn) {
+    return arr.map(fn);
+}
+var arr2sq = [1,2,3,4,5];
+console.log(mapMe(arr2sq,squareMe));
+
+//Cities 1
+var cities = [
+  { name: 'Los Angeles', temperature: 60.0},
+  { name: 'Atlanta', temperature: 52.0 },
+  { name: 'Detroit', temperature: 48.0 },
+  { name: 'New York', temperature: 80.0 }
+];
+
+function getTemp(city) {
+    return city.temperature;
+}
+
+function isCoolerThan70(city) {
+    return getTemp(city) < 70;
+}
+
+function citiesCoolerThan70(arr, fn) {
+    return arr.filter(fn);
+}
+
+console.log(citiesCoolerThan70(cities, isCoolerThan70));
+
+// var allCities = cities.filter(function(city){
+//     return city.temperature < 70;
+// });
+
+// var allCities = cities.map(city => city.name);
+
+//console.log(allCities);
+
