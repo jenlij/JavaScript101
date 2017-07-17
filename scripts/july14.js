@@ -291,3 +291,40 @@ function product(numArr) {
 
 console.log(product([1,2,3,4,5,6]));
 
+//total price
+var products = [
+  { name: 'Basketball', price: 12.00 },
+  { name: 'Tennis Racquet', price: 66.00 },
+  { name: 'Tennis Balls', price: 9.00 },
+  { name: 'Tennis Balls', price: 9.00 }
+];
+
+function total(productArray) {
+    return productArray.reduce(function (tally, current){
+        return tally + current.price;
+        //current.price === current['price']
+    }, 0);
+}
+console.log(total(products));
+
+//str join
+function strJoin(strs, sep) {
+    return strs.reduce(function (tally, str) {
+        if (tally === '') {
+            return str;
+        }
+        else {
+            return tally + sep + str;
+            }
+        }, ''); 
+}
+
+function strJoin2(strs, sep) {
+    return strs.reduce( function(tally, str){
+        return tally + sep + str;
+    });
+}
+
+console.log(strJoin2(['Hello', 'and', 'goodbye'], '!!!'));
+
+console.log(strJoin(['Hello', 'and', 'goodbye'], ' '));
