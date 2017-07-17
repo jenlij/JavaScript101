@@ -105,6 +105,25 @@ function positiveNums(arr) {
 }
 console.log(positiveNums([0, 1, -1, 2, -2, 3, 4, -5]));
 
+//re-usable function maker version
+function isPositive(num) {
+    return num > 0;
+}
+function isNegative(num) {
+    return num < 0;
+}
+
+function makeFilter(fn) {
+    return function(numArr) {
+        return numArr.filter(fn);
+    }
+}
+var positive = makeFilter(isPositive);
+console.log(positive([1,-1,2,3,-5]));
+
+var negative = makeFilter(isNegative);
+console.log(negative([-1,-2,-3,4,5,6]));
+
 //even numbers
 //common version
 function evens(arr) {
@@ -126,6 +145,9 @@ function filterMe(arr, fn) {
     return arr.filter(fn);
 }
 console.log(filterMe(arr, isEven));
+
+var even = makeFilter(isEven);
+console.log(evens(arr));
 
 //Square the numbers
 function squareMe(num) {
@@ -166,4 +188,106 @@ console.log(citiesCoolerThan70(cities, isCoolerThan70));
 // var allCities = cities.map(city => city.name);
 
 //console.log(allCities);
+
+//cities 2
+function get(prop) {
+    return function(obj) {
+        return obj[prop];
+    }
+}
+
+function cityNames(cityArray) {
+    return cityArray.map(get('name'));
+}
+console.log(cityNames(cities));
+
+function coolCities(cityArray) {
+    return cityArray.filter(isCoolerThan70);
+}
+
+function coolCityNames(cityArray) {
+    return cityNames(coolCities(cityArray));
+}
+console.log(coolCityNames(cities));
+
+//good job
+var people = [
+  'Dom',
+  'Lyn',
+  'Kirk',
+  'Autumn',
+  'Trista',
+  'Jesslyn',
+  'Kevin',
+  'John',
+  'Eli',
+  'Juan',
+  'Robert',
+  'Keyur',
+  'Jason',
+  'Che',
+  'Ben'
+];
+
+function addCongrats (peep) {
+    return 'Good Job, ' + peep + '!';
+}
+
+function addLineBreak (peep) {
+    return peep + '\n';
+}
+
+function printMe (peepArray) {
+    return peepArray
+            .map(addCongrats)
+            .map(addLineBreak);
+}
+
+//V2
+function congratsPeeps(peepArray) {
+    return peepArray.map(function(peep) {
+        return 'Good Job, ' + peep + '!';
+    });
+}
+
+function formatPeeps(peepArray) {
+    return peepArray.map(function (peep) {
+        return peep + '\n';
+    });
+}
+
+//3 times
+function call3Times(fun) {
+    fun();
+    fun();
+    fun();
+}
+function hello2(name){
+    console.log('hello ' + name);
+}
+
+function hello() {
+    console.log('hello world');
+}
+
+call3Times(hello);
+
+//n times
+function callNTimes(num, fn, name) {
+    for (var i = 0; i < num; i++) {
+        fn(name);
+    }
+}
+console.log(callNTimes(5, hello2, 'Bob'));
+
+//product
+function calcProduct(total, currentElem) {
+    return total * currentElem;
+}
+
+function product(numArr) {
+    return numArr.reduce(calcProduct, 1); //starting value is optional here
+}
+
+console.log(product([1,2,3,4,5,6]));
 
