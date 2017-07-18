@@ -319,6 +319,13 @@ function strJoin(strs, sep) {
         }, ''); 
 }
 
+function strJoin3(strs, sep) {
+    return strs.reduce( function(tally, str){
+        return tally + sep + str;
+    },'');
+}
+
+
 function strJoin2(strs, sep) {
     return strs.reduce( function(tally, str){
         return tally + sep + str;
@@ -327,4 +334,153 @@ function strJoin2(strs, sep) {
 
 console.log(strJoin2(['Hello', 'and', 'goodbye'], '!!!'));
 
+console.log(strJoin3(['Hello', 'and', 'goodbye'], '!!!'));
+
 console.log(strJoin(['Hello', 'and', 'goodbye'], ' '));
+
+//acronym
+function acronym(arr) {
+    var letters = arr.map(function(word){
+        return word[0].toUpperCase();
+    });
+    return strJoin(letters, '');
+}
+
+console.log(acronym(['very', 'important', 'person']));//'VIP'
+console.log(acronym(['national', 'aeronautics', 'space', 'administration'])); //'NASA
+
+
+//str multiply
+function strMultiply(str, times) {
+    var newArr = [];
+    for (var i = 0; i < times; i++) {
+        newArr.push(str);
+    }
+    return strJoin(newArr, '');
+}
+
+console.log(strMultiply('abc', 5));
+
+//sort array
+var people = [
+  'Dom',
+  'Lyn',
+  'Kirk',
+  'Autumn',
+  'Trista',
+  'Jesslyn',
+  'Kevin',
+  'John',
+  'Eli',
+  'Juan',
+  'Robert',
+  'Keyur',
+  'Jason',
+  'Che',
+  'Ben'
+];
+
+function sortAlpha(arrayOfStrings) {
+  return arrayOfStrings.sort();
+}
+console.log(sortAlpha(people));
+
+//sort array2
+
+function numberComparator(a, b) {
+  var result = 0;
+
+  if (a < b) {
+    result = -1;
+  } else  if (a > b) {
+    result = 1;
+  }
+
+  return result;
+}
+
+function sortNumbers(arrayOfNums) {
+  return arrayOfNums.sort(numberComparator);
+}
+function sortByLength(arrayOfString) {
+  return arrayOfString.sort(function (a, b) {
+    return numberComparator(b.length, a.length);
+  })
+}
+
+console.log(sortByLength(people));
+//sort array 3
+
+var products = [
+  { name: 'Basketball', price: 12.00 },
+  { name: 'Tennis Racquet', price: 66.00 },
+  { name: 'Tennis Balls', price: 9.00 },
+  { name: 'Tennis Balls', price: 9.00 }
+];
+
+function sortByPrice(productsArray) {
+  return productsArray.sort(function (a, b) {
+    return numberComparator(a.price, b.price);
+  })
+}
+console.log(sortByPrice(products));
+
+//Scope and Hoisting Exercises
+var name = 'Loki';
+function hello(name) {
+  console.log('Hello,', name);
+}
+hello('Thor'); //Hello, Thor
+
+//Problem 2
+// var counter = 0;
+// function hello() {
+//   console.log('Hello, world!');
+//   counter = counter + 1;
+// }
+// hello();
+// hello();
+// console.log('Called hello', counter, 'times.');
+//Hello, world!
+//Hello, world!
+//Called hello 2 times.
+
+//Problem 3
+var counter = 0;
+function updateCounter() {
+  counter += 1;
+  console.log('The global count is', counter);
+  var counter = 0; //for global count to be 1, remove 'var' declaration
+  console.log('The local count is reset to', counter);
+}
+updateCounter(); //The global count is NaN, the local count it reset to 0
+updateCounter(); //The global count is NaN, the local count it reset to 0
+updateCounter(); //The global count is NaN, the local count it reset to 0
+
+
+//Problem 4
+
+var a = 0;
+console.log(a);
+function f(c) {
+    console.log(c);
+    var b = 1;
+    function g(d) {
+        console.log(b);
+        var e = 4;
+        console.log(d);
+        console.log(e);
+    }
+  return g;
+}
+
+
+
+
+
+
+
+
+
+
+
