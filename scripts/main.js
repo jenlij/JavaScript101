@@ -328,24 +328,85 @@ function matrixAdd(matrix1, matrix2) {
     return sumMatrix;
 }
 console.log(matrixAdd([[1, 3], [2, 4]], [[5, 2], [1, 0]]));
-    
-    //var  i=0
-
-
-    // for row in twoD1:
-    //     new_row = []
-    //     j = 0
-    //     for value in row:
-    //         new_row.append(value + twoD2[i][j])
-    //         j += 1
-    //     new_matrix.append(new_row)
-    //     i += 1       
-
-
 
 
 //matrix multiplication
+function matrixMultiply(a, b) {
+    var productMatrix = [['na' ,'na'],['na', 'na']];
+    var n = 0;
+    var p;
+    while ( n < 2 ) {
+        p = 0;
+        while ( p < 2) {
+            productMatrix[n][p] = (a[n][0]*b[0][p]) + (a[n][1]*b[1][p]);
+            p += 1;   
+        }
+        n += 1;
+    }
+    return productMatrix;
+}
+console.log(matrixMultiply([[2, 4], [3, 4]], [[5, 2], [3, 1]])); //[ [22,  8], [27, 10] ]
 
 //rock paper scissors
+function rockPaperScissors(player1 , player2) {
+    var winner = 'null';
+    if (player1 == player2) {
+        winner = 'draw';
+    } else if (player1 == 'rock' && player2 == 'scissors') {
+        winner = 'player 1';
+    } else if (player1 == 'rock' && player2 == 'paper') {
+        winner = 'player 2';
+    } else if (player1 == 'scissors' && player2 == 'paper') {
+        winner = 'player 1';
+    } else if (player1 == 'scissors' && player2 == 'rock') {
+        winner = 'player 2';
+    } else if (player1 == 'paper' && player2 == 'rock') {
+        winner = 'player 1';
+    } else if (player1 == 'paper' && player2 == 'scissors') {
+        winner = 'player 2';
+    } else {
+        winner = 'null';
+    } return winner;
+}
+console.log(rockPaperScissors('rock', 'scissors')); //player 1
+console.log(rockPaperScissors('rock', 'paper')); //player 2
+console.log(rockPaperScissors('paper', 'paper')); //draw
+
+
 
 //tic tac toe
+function ticTacToe(board) {
+    var winner = 'null';
+
+    if      ((board[0][0] == board[0][1]) && (board[0][1] == board[0][2])) { winner = board[0][0]; } //first row
+    else if ((board[0][0] == board[1][0]) && (board[1][0] == board[2][0])) { winner = board[0][0]; } //first col
+    else if ((board[1][0] == board[1][1]) && (board[1][1] == board[1][2])) { winner = board[1][0]; } //second row
+    else if ((board[0][1] == board[1][1]) && (board[1][1] == board[2][1])) { winner = board[0][1]; } //second col
+    else if ((board[2][0] == board[2][1]) && (board[2][1] == board[2][2])) { winner = board[2][0]; } //third row
+    else if ((board[0][2] == board[1][2]) && (board[1][2] == board[2][2])) { winner = board[0][2]; } //third col
+    else if ((board[0][0] == board[1][1]) && (board[1][1] == board[2][2])) { winner = board[0][0]; } //diag1
+    else if ((board[0][2] == board[1][1]) && (board[1][1] == board[2][0])) { winner = board[0][2]; } //diag2
+    else { winner = 'null'; }  
+
+    //return winner;
+    console.log(winner);
+}
+
+ticTacToe([
+  ['O', 'O', 'O'],
+  ['X', null, 'X'],
+  [null, 'X', null]
+  ]);
+//'O'
+ticTacToe([
+  ['O', 'X', 'O'],
+  ['O', 'X', null],
+  [null, 'X', null]
+  ]);
+//'X'
+ticTacToe([
+  ['O', 'X', 'O'],
+  ['O', 'O', null],
+  [null, 'X', 'X']
+  ]);
+//null
